@@ -11,16 +11,10 @@ import {
   RESET_SUCCESS,
   SET_PAGINATION,
 } from "./action-types";
-const ApiToken = process.env.REACT_TOKEN_API;
 export const getUsers = (page, gender) => async (dispatch) => {
   try {
     const { data, headers } = await API.get(
-      `users?page=${page}&gender=${gender}`,
-      {
-        headers: {
-          Authorization: `Bearer ${ApiToken}`,
-        },
-      }
+      `users?page=${page}&gender=${gender}`
     );
 
     const getusers = data;
@@ -37,11 +31,7 @@ export const getUsers = (page, gender) => async (dispatch) => {
 
 export const getUser = (id) => async (dispatch) => {
   try {
-    const { data } = await API.get(`users/${id}, `, {
-      headers: {
-        Authorization: `Bearer ${ApiToken}`,
-      },
-    });
+    const { data } = await API.get(`users/${id}`);
 
     const getuser = data;
     dispatch(setUser(getuser));

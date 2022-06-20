@@ -39,12 +39,13 @@ const Edit = () => {
     loadUser(id);
   }, [id]);
 
+  //helpers
   const loadUser = async (id) => {
     setIsLoaded(false);
     await dispatch(getUser(id));
     setIsLoaded(true);
   };
-  //helpers
+
   const editClickHandler = (newValue) => {
     dispatch(editUsers(id, newValue, navigate));
   };
